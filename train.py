@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 from sklearn.metrics import confusion_matrix, classification_report
 from tensorflow import keras
-from tensorflow.python.keras.applications.mobilenet import MobileNet
+from tensorflow.python.keras.applications.mobilenet_v2 import MobileNetV2
 from keras.layers import GlobalAveragePooling2D, Dense, Dropout
 from keras.models import Model
 import matplotlib.pylab as plt
@@ -36,7 +36,7 @@ test_generator = test_datagen.flow_from_directory(
 
 def make_model():
     # create base model
-    base_model = MobileNet(include_top=False, weights="imagenet", input_shape=(224, 224, 3))
+    base_model = MobileNetV2(include_top=False, weights="imagenet", input_shape=(224, 224, 3))
 
     # create main model
     inputs = keras.Input(shape=(224, 224, 3))
